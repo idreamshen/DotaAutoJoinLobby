@@ -4,9 +4,32 @@
 #include "stdafx.h"
 #include <iostream>
 
-#include "hwndDota.h"
+#include "dota.h"
 
 using namespace std;
+
+BOOL CopyToClipboard(const char* pszData, const int nDataLen)
+{
+	if (OpenClipboard(NULL))
+	{
+		EmptyClipboard();
+		//HGLOBAL clipbuffer;
+		//char *buffer;
+		HGLOBAL hglbCopy;
+		LPVOID lptstrCopy;
+		//clipbuffer = ::GlobalAlloc(GMEM_MOVEABLE, nDataLen + 1);
+		hglbCopy = GlobalAlloc(GMEM_MOVEABLE, 255);
+		//buffer = (char *)::GlobalLock(clipbuffer);
+		lptstrCopy = GlobalLock(hglbCopy);
+		//strcpy_s(buffer, 255, pszData);
+		memcpy(lptstrCopy, pszData, 255);
+		GlobalUnlock(hglbCopy);
+		SetClipboardData(CF_TEXT, hglbCopy);
+		CloseClipboard();
+		return TRUE;
+	}
+	return FALSE;
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -18,52 +41,73 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	else
 	{
+		string password;
+		//int team;
+		int slot;
+		cout << "请输入房间密码: " << endl;
+		cin >> password;
+		/*cout << "请输入队伍，天辉输入1，夜魇输入2: " << endl;
+		cin >> team;*/
+		cout << "请输入位置，1楼输入1，2楼输入2， ... ，10楼输入10，以此类推: " << endl;
+		cin >> slot;
+
+		CopyToClipboard(password.c_str(), password.length());
+
+		
+
 		dota.Show();
 		Sleep(50);
 
-		posCursor posGame;
+		inGameBtn inGameBtnPos;
+		inGameBtnPos = dota.basicRes43(dota.rectClient.right, dota.rectClient.bottom, dota.resolution43);
+
+		/*posCursor posGame;
 		posGame.x = 348;
-		posGame.y = 11;
-		dota.InGameClick(posGame);
+		posGame.y = 11;*/
+		dota.InGameClick(inGameBtnPos.posGame);
 
-		posCursor posFindLobby;
+		/*posCursor posFindLobby;
 		posFindLobby.x = 86;
-		posFindLobby.y = 305;
-		dota.InGameClick(posFindLobby);
+		posFindLobby.y = 305;*/
+		dota.InGameClick(inGameBtnPos.posFindLobby);
 
-		posCursor posPrivateLobby;
+		/*posCursor posPrivateLobby;
 		posPrivateLobby.x = 487;
-		posPrivateLobby.y = 125;
-		dota.InGameClick(posPrivateLobby);
+		posPrivateLobby.y = 125;*/
+		dota.InGameClick(inGameBtnPos.posPrivateLobby);
 
-		posCursor posEditPassword;
+		/*posCursor posEditPassword;
 		posEditPassword.x = 322;
-		posEditPassword.y = 169;
-		dota.InGameClick(posEditPassword);
+		posEditPassword.y = 169;*/
+		dota.InGameClick(inGameBtnPos.posEditPassword);
 
 		Sleep(500);
 		dota.SendCtrlA();
 		Sleep(50);
 		dota.SendCtrlV();
 
-		posCursor posSecFindLobby;
+		/*posCursor posSecFindLobby;
 		posSecFindLobby.x = 410;
-		posSecFindLobby.y = 171;
-		dota.InGameClick(posSecFindLobby);
+		posSecFindLobby.y = 171;*/
+		dota.InGameClick(inGameBtnPos.posSecFindLobby);
 
 		Sleep(1000);
 
-		posCursor posJoinLobby;
+		/*posCursor posJoinLobby;
 		posJoinLobby.x = 495;
-		posJoinLobby.y = 198;
-		dota.InGameClick(posJoinLobby);
+		posJoinLobby.y = 198;*/
+		dota.InGameClick(inGameBtnPos.posJoinLobby);
 		
 		Sleep(1500);
 
-		posCursor posJoinSlot;
+		
+
+		/*posCursor posJoinSlot;
 		posJoinSlot.x = 312;
-		posJoinSlot.y = 224;
-		dota.InGameClick(posJoinSlot);
+		posJoinSlot.y = 224;*/
+		/*posJoinSlot.x = x;
+		posJoinSlot.y = y;*/
+		dota.InGameClick(inGameBtnPos.posJoinSlot[slot - 1]);
 	}
 
 	system("pause");

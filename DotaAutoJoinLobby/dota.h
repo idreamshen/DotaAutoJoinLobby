@@ -18,16 +18,7 @@ struct inGameBtn
 	posCursor posEditPassword;
 	posCursor posSecFindLobby;
 	posCursor posJoinLobby;
-	posCursor posJoinSlot1;
-	posCursor posJoinSlot2;
-	posCursor posJoinSlot3;
-	posCursor posJoinSlot4;
-	posCursor posJoinSlot5;
-	posCursor posJoinSlot6;
-	posCursor posJoinSlot7;
-	posCursor posJoinSlot8;
-	posCursor posJoinSlot9;
-	posCursor posJoinSlot10;
+	posCursor posJoinSlot[10];
 };
 
 class DOTA
@@ -40,6 +31,13 @@ public:
 	void InGameClick(posCursor pos);
 	void SendCtrlA();
 	void SendCtrlV();
+	float GetResolutionRatio();
+	inGameBtn basicRes43(int x, int y, inGameBtn btn);
+
+	RECT rectClient;                                       // Dota 客户窗口矩形区域
+	inGameBtn resolution43;
+	inGameBtn resolution169;
+	inGameBtn resolution1610;
 	
 private:
 	void SetHwnd(); // 设置 Dota 句柄
@@ -59,21 +57,11 @@ private:
 	string lpWindowName;
 	HWND hwnd;                                             // Dota 窗口句柄
 	RECT rectWindow;                                       // Dota 窗体窗口矩形区域
-	RECT rectClient;                                       // Dota 客户窗口矩形区域
+	
 	int leftOffsetClient;                                  // Dota 客户窗口左偏移量，即左边框厚度
 	int topOffsetClient;                                   // Dota 客户窗口上偏移量，即标题厚度
 
-	inGameBtn resolution640480;
-	inGameBtn resolution800600;
-	inGameBtn resolution1024768;
 
-	inGameBtn resolution1024600;
-	inGameBtn resolution1280720;
-	inGameBtn resolution1360768;
-	inGameBtn resolution1366768;
-
-	inGameBtn resolution800480;
-	inGameBtn resolution1280768;
 };
 
 

@@ -24,7 +24,7 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="hwndDota.h">
+    <ClInclude Include="dota.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClCompile Include="DotaAutoJoinLobby.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="hwndDota.cpp">
+    <ClCompile Include="dota.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
