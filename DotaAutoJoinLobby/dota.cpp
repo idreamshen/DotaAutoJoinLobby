@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "dota.h"
 
 LPCWSTR s2lpcwstr(const string& s)
@@ -59,7 +59,7 @@ void DOTA::SetHwnd()
 	{
 		hwnd = dota;
 #ifdef _DEBUG
-		cout << "ÕÒµ½ Dota ¾ä±ú" << endl;
+		cout << "æ‰¾åˆ° Dota å¥æŸ„" << endl;
 #endif
 	}
 	else
@@ -79,7 +79,7 @@ void DOTA::Show()
 	if (hwnd)
 	{
 #ifdef _DEBUG
-		cout << "Ç°ÖÃ Dota ´°¿Ú" << endl;
+		cout << "å‰ç½® Dota çª—å£" << endl;
 #endif
 		
 		SetActiveWindow(hwnd);
@@ -94,7 +94,7 @@ void DOTA::Show()
 	}
 	else
 	{
-		cout << "ÎÞ·¨Ç°ÖÃ Dota ´°¿Ú¡£Ô­Òò£ºÎÞ·¨»ñÈ¡ Dota ´°¿Ú¾ä±ú£¡" << endl;
+		cout << "æ— æ³•å‰ç½® Dota çª—å£ã€‚åŽŸå› ï¼šæ— æ³•èŽ·å– Dota çª—å£å¥æŸ„ï¼" << endl;
 	}
 }
 
@@ -103,10 +103,10 @@ RECT DOTA::GetRectWindow()
 	GetWindowRect(hwnd, &rectWindow);
 #ifdef _DEBUG
 	cout << "--------------------------" << endl;
-	cout << "´°Ìå×ó: " << rectWindow.left << endl;
-	cout << "´°ÌåÉÏ: " << rectWindow.top << endl;
-	cout << "´°ÌåÓÒ: " << rectWindow.right << endl;
-	cout << "´°ÌåÏÂ: " << rectWindow.bottom << endl;
+	cout << "çª—ä½“å·¦: " << rectWindow.left << endl;
+	cout << "çª—ä½“ä¸Š: " << rectWindow.top << endl;
+	cout << "çª—ä½“å³: " << rectWindow.right << endl;
+	cout << "çª—ä½“ä¸‹: " << rectWindow.bottom << endl;
 #endif
 	return rectWindow;
 }
@@ -116,10 +116,10 @@ RECT DOTA::GetRectClient()
 	GetClientRect(hwnd, &rectClient);
 #ifdef _DEBUG
 	cout << "--------------------------" << endl;
-	cout << "´°Ìå¿Í»§Çø×ó: " << rectClient.left << endl;
-	cout << "´°Ìå¿Í»§ÇøÉÏ: " << rectClient.top << endl;
-	cout << "´°Ìå¿Í»§ÇøÓÒ: " << rectClient.right << endl;
-	cout << "´°Ìå¿Í»§ÇøÏÂ: " << rectClient.bottom << endl;
+	cout << "çª—ä½“å®¢æˆ·åŒºå·¦: " << rectClient.left << endl;
+	cout << "çª—ä½“å®¢æˆ·åŒºä¸Š: " << rectClient.top << endl;
+	cout << "çª—ä½“å®¢æˆ·åŒºå³: " << rectClient.right << endl;
+	cout << "çª—ä½“å®¢æˆ·åŒºä¸‹: " << rectClient.bottom << endl;
 #endif
 	return rectClient;
 }
@@ -129,7 +129,7 @@ int DOTA::GetLeftOffsetClient()
 	leftOffsetClient = ((rectWindow.right - rectWindow.left) - (rectClient.right - rectClient.left)) / 2;
 #ifdef _DEBUG
 	cout << "--------------------------" << endl;
-	cout << "´°Ìå×ó±ß¿òºñ¶È: " << leftOffsetClient << endl;
+	cout << "çª—ä½“å·¦è¾¹æ¡†åŽšåº¦: " << leftOffsetClient << endl;
 #endif
 	return leftOffsetClient;
 }
@@ -139,7 +139,7 @@ int DOTA::GetTopOffsetClient()
 	topOffsetClient = (rectWindow.bottom - rectWindow.top) - (rectClient.bottom - rectClient.top) - leftOffsetClient;
 #ifdef _DEBUG
 	cout << "--------------------------" << endl;
-	cout << "´°ÌåÉÏ±ß¿òºñ¶È: " << topOffsetClient << endl;
+	cout << "çª—ä½“ä¸Šè¾¹æ¡†åŽšåº¦: " << topOffsetClient << endl;
 #endif
 	return topOffsetClient;
 }
